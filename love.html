@@ -1,99 +1,200 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>七夕快乐❤️</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            background: #111;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            font-family: "Microsoft Yahei",sans‑serif;
-        }
-        .text-box{
-            z-index:99;
-            text-align:center;
-            color:#ff6b8b;
-        }
-        h1{
-            font-size:36px;
-            margin-bottom:16px;
-        }
-        p{
-            font-size:20px;
-            line-height:1.8;
-        }
-        #container{
-            position:absolute;
-            width:100%;
-            height:100%;
-        }
-        .heart{
-            position:absolute;
-            background:#ff4466;
-            transform:rotate(-45deg);
-            animation: fall 8s linear infinite;
-        }
-        .heart::before,.heart::after{
-            content:"";
-            width:100%;
-            height:100%;
-            background:#ff4466;
-            border-radius:50%;
-            position:absolute;
-        }
-        .heart::before{top:-50%;left:0;}
-        .heart::after{top:0;right:-50%;}
-
-        @keyframes fall {
-            0%{
-                transform: translateY(-20px) rotate(-45deg);
-                opacity:1;
-            }
-            100%{
-                transform: translateY(100vh) rotate(-45deg);
-                opacity:0;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>致并肩共事的兄弟</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    min-height:100vh;
+    color:#ffffff;
+    font-family:"Microsoft Yahei","PingFang SC",sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+    line-height:1.9;
+    background-image:url('https://p3-flow-image-sign.byteimg.com/ocean-cloud-tos/9a001213139441389d4f0d3422401311~tplv-a9rns2rl98-image.image');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    position:relative;
+}
+body::before{
+    content:'';
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.48);
+    z-index:0;
+}
+#particles-canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    z-index:1;
+}
+.container{
+    max-width:720px;
+    text-align:center;
+    background:rgba(0,0,0,0.58);
+    padding:30px;
+    border-radius:24px;
+    box-shadow:0 0 35px rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    z-index:2;
+    position:relative;
+}
+.blink-title{
+    font-size:52px;
+    font-weight:900;
+    margin-bottom:24px;
+    letter-spacing:4px;
+    animation:colorBlink 1.2s infinite;
+    text-shadow:0 0 10px currentColor, 0 0 20px currentColor;
+}
+@keyframes colorBlink {
+    0%{color:#ff4757;}
+    25%{color:#ffd166;}
+    50%{color:#2ed573;}
+    75%{color:#1e90ff;}
+    100%{color:#ff6b81;}
+}
+h1{
+    font-size:34px;
+    margin-bottom:30px;
+    color:#ffffff;
+    text-shadow:0 0 8px rgba(255,255,255,0.6);
+}
+p{
+    font-size:18px;
+    margin-bottom:22px;
+    text-align:justify;
+    background:linear-gradient(90deg, #ffd166, #ff6b81, #2ed573, #1e90ff);
+    background-size:300% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:textColorShift 8s ease-in-out infinite;
+}
+@keyframes textColorShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+.heart{
+    position:fixed;
+    color:#ff6b81;
+    font-size:24px;
+    animation:fall 8s linear infinite;
+    pointer-events:none;
+    z-index:3;
+}
+@keyframes fall{
+    0%{transform:translateY(-10vh);opacity:1;}
+    100%{transform:translateY(110vh);opacity:0;}
+}
+@media(max-width:640px){
+    .blink-title{font-size:38px;}
+    h1{font-size:26px;}
+    p{font-size:16px;}
+    .container{padding:20px;}
+}
+</style>
 </head>
 <body>
-<div id="container"></div>
-<div class="text-box">
-    <h1>七夕快乐 💖</h1>
-    <p>世界很大，有幸遇见你</p>
-    <p>往后的朝朝暮暮，想和你一起度过</p>
-    <p>我喜欢你。</p>
+<canvas id="particles-canvas"></canvas>
+<div class="container">
+<div class="blink-title">七夕快乐</div>
+<h1>致并肩共事的兄弟</h1>
+<p>职场人海茫茫，能够成为同事并肩前行，是一份难得的缘分。一路走来，十分感谢平日里你的包容、理解与帮衬。工作之中总会遇到棘手难题与繁重任务，很多关键时刻多亏彼此搭把手，分担压力，互相补位。正是有靠谱的伙伴同行，很多压力才得以化解，枯燥的工作也多了几分暖意。</p>
+<p>我们日常没有过多虚浮客套，更多是务实的沟通、默契的配合。一起对接任务，一起处理难题，交流想法，取长补短。共事的时光里，既有赶任务时的紧张忙碌，也有解决问题之后的轻松释然，这份简单纯粹的同事情谊格外珍贵。</p>
+<p>衷心为你送上祝福，愿往后事业稳步向上，每一份付出都能得到应有的回报。工作少一些无谓内耗与琐碎麻烦，多一些机遇、认可与收获，前路开阔坦荡。忙碌之余也希望好好生活，照顾好自身状态，拥有松弛自在的闲暇时光。</p>
+<p>愿往后无论工作还是生活，遇事从容豁达，看淡得失，内心安稳踏实。凡有所求，皆有所向；凡有所行，皆是坦途。保持本心，稳步前行，平安顺遂，万事胜意。期待往后继续彼此扶持，共勉共进。</p>
 </div>
-
 <script>
-const container = document.getElementById('container');
-
 function createHeart(){
-    const heart = document.createElement('div');
+    const heart=document.createElement('div');
     heart.classList.add('heart');
-    const size = Math.random()*20 +10;
-    heart.style.width = size + 'px';
-    heart.style.height = size + 'px';
-    heart.style.left = Math.random()*100 +'%';
-    heart.style.animationDuration = (Math.random()*4+4)+'s';
-    container.appendChild(heart);
+    heart.innerText='✦';
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.animationDuration=(Math.random()*4+6)+'s';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),10000);
+}
+setInterval(createHeart,400);
 
-    setTimeout(()=>{
-        heart.remove();
-    },8000)
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let w, h;
+let particles = [];
+
+function resize(){
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize',resize);
+
+class Particle{
+    constructor(){
+        this.x = Math.random()*w;
+        this.y = Math.random()*h;
+        this.r = Math.random()*2 +0.5;
+        this.sx = (Math.random()-0.5)*0.6;
+        this.sy = (Math.random()-0.5)*0.6;
+    }
+    update(){
+        this.x += this.sx;
+        this.y += this.sy;
+        if(this.x<0||this.x>w) this.sx *= -1;
+        if(this.y<0||this.y>h) this.sy *= -1;
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+        ctx.fillStyle = 'rgba(255,255,255,0.45)';
+        ctx.fill();
+    }
 }
 
-//持续生成爱心
-setInterval(createHeart,300);
+for(let i=0;i<120;i++){
+    particles.push(new Particle());
+}
+
+function drawLine(p1,p2){
+    let dx = p1.x-p2.x;
+    let dy = p1.y-p2.y;
+    let dist = Math.sqrt(dx*dx+dy*dy);
+    if(dist<120){
+        ctx.beginPath();
+        ctx.moveTo(p1.x,p1.y);
+        ctx.lineTo(p2.x,p2.y);
+        ctx.strokeStyle = `rgba(255,255,255,${0.25-dist/480})`;
+        ctx.lineWidth=0.4;
+        ctx.stroke();
+    }
+}
+
+function loop(){
+    ctx.clearRect(0,0,w,h);
+    for(let i=0;i<particles.length;i++){
+        particles[i].update();
+        particles[i].draw();
+        for(let j=i+1;j<particles.length;j++){
+            drawLine(particles[i],particles[j]);
+        }
+    }
+    requestAnimationFrame(loop);
+}
+loop();
 </script>
 </body>
 </html>
