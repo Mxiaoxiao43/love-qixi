@@ -15,11 +15,9 @@ body{
     justify-content:center;
     padding:40px 20px;
     line-height:1.9;
-    /* 粘贴你的机场图片链接到引号内 */
-    background: url("https://images.ccaonline.cn/wp-content/uploads/2017/04/da7f9e33dcd1de93096e.jpg?x-oss-process=image/resize,m_fill,h_480,w_720/sharpen,120") center / cover fixed no-repeat;
+    background: url("https://tse3-mm.cn.bing.net/th/id/OIP-C.keQ2rLMvJNQsJKE8U5qZjQHaEL?w=268&h=180&c=7&r=0&o=7&pid=1.7&rm=3") center / cover fixed no-repeat;
     position:relative;
 }
-/* 彻底删除全局黑色遮罩body::before */
 #particles-canvas{
     position:fixed;
     top:0;
@@ -31,12 +29,11 @@ body{
 .container{
     max-width:720px;
     text-align:center;
-    /* 只保留文字卡片淡淡的半透明，不遮挡背景 */
-    background:rgba(0,0,0,0.22);
+    background:transparent;
     padding:34px;
     border-radius:26px;
-    box-shadow:0 10px 40px rgba(0,0,0,0.12);
-    backdrop-filter:blur(6px);
+    box-shadow:none;
+    backdrop-filter:none;
     z-index:2;
     position:relative;
 }
@@ -46,7 +43,7 @@ body{
     margin-bottom:24px;
     letter-spacing:4px;
     animation:colorBlink 1.2s infinite;
-    text-shadow:0 0 12px rgba(0,0,0,0.6);
+    text-shadow:0 0 8px rgba(0,0,0,0.75);
 }
 @keyframes colorBlink {
     0%{color:#36ff88;}
@@ -59,7 +56,7 @@ h1{
     font-size:34px;
     margin-bottom:30px;
     color:#ffffff;
-    text-shadow:0 0 8px rgba(0,0,0,0.7);
+    text-shadow:0 0 8px rgba(0,0,0,0.8);
 }
 p{
     font-size:18px;
@@ -71,6 +68,7 @@ p{
     background-clip:text;
     color:transparent;
     animation:textColorShift 8s ease-in-out infinite;
+    text-shadow:0 0 6px rgba(0,0,0,0.6);
 }
 @keyframes textColorShift{
     0%{background-position:0% 50%;}
