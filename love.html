@@ -15,7 +15,7 @@ body{
     justify-content:center;
     padding:40px 20px;
     line-height:1.9;
-    background: url("https://tse4-mm.cn.bing.net/th/id/OIP-C.Fl6Zjxrxly1uzbq0dRXARgHaFT?w=220&h=180&c=7&r=0&o=7&pid=1.7&rm=3") center / cover fixed no-repeat;
+    background: url("./liu-ink.jpg") center / cover fixed no-repeat;
     position:relative;
 }
 #particles-canvas{
@@ -29,11 +29,11 @@ body{
 .container{
     max-width:720px;
     text-align:center;
-    background:transparent;
+    /* 半透明白底色，保留背景画面，黑字清晰 */
+    background:rgba(255,255,255,0.72);
     padding:34px;
     border-radius:26px;
-    box-shadow:none;
-    backdrop-filter:none;
+    box-shadow:0 4px 16px rgba(0,0,0,0.25);
     z-index:2;
     position:relative;
 }
@@ -43,7 +43,6 @@ body{
     margin-bottom:24px;
     letter-spacing:4px;
     animation:colorBlink 1.2s infinite;
-    text-shadow:0 0 8px rgba(0,0,0,0.75);
 }
 @keyframes colorBlink {
     0%{color:#36ff88;}
@@ -55,8 +54,7 @@ body{
 h1{
     font-size:34px;
     margin-bottom:30px;
-    color:#ffffff;
-    text-shadow:0 0 8px rgba(0,0,0,0.8);
+    color:#000000;
 }
 p{
     font-size:18px;
@@ -64,7 +62,6 @@ p{
     color:#000000;
     margin-bottom:22px;
     text-align:justify;
-    -webkit-text-stroke:0.7px #ffffff;
 }
 .heart{
     position:fixed;
