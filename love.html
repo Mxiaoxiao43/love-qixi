@@ -8,7 +8,6 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
     min-height:100vh;
-    color:#ffffff;
     font-family:"Microsoft Yahei","PingFang SC",sans-serif;
     display:flex;
     flex-direction:column;
@@ -16,20 +15,11 @@ body{
     justify-content:center;
     padding:40px 20px;
     line-height:1.9;
-    /* =========把你的图片链接粘贴到下面双引号""中间========= */
-    background: url("https://tse3-mm.cn.bing.net/th/id/OIP-C.Z1xzkTs_XPizx0q9iXKG-gHaEh?w=256&h=180&c=7&r=0&o=7&pid=1.7&rm=3") center / cover fixed no-repeat;
+    /* 粘贴你的机场图片链接到引号内 */
+    background: url("https://images.ccaonline.cn/wp-content/uploads/2017/04/da7f9e33dcd1de93096e.jpg?x-oss-process=image/resize,m_fill,h_480,w_720/sharpen,120") center / cover fixed no-repeat;
     position:relative;
 }
-body::before{
-    content:'';
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.08);
-    z-index:0;
-}
+/* 彻底删除全局黑色遮罩body::before */
 #particles-canvas{
     position:fixed;
     top:0;
@@ -41,11 +31,12 @@ body::before{
 .container{
     max-width:720px;
     text-align:center;
-    background:rgba(0,0,0,0.50);
-    padding:30px;
-    border-radius:24px;
-    box-shadow:0 0 35px rgba(255,255,255,0.08);
-    backdrop-filter:blur(10px);
+    /* 只保留文字卡片淡淡的半透明，不遮挡背景 */
+    background:rgba(0,0,0,0.22);
+    padding:34px;
+    border-radius:26px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.12);
+    backdrop-filter:blur(6px);
     z-index:2;
     position:relative;
 }
@@ -55,26 +46,26 @@ body::before{
     margin-bottom:24px;
     letter-spacing:4px;
     animation:colorBlink 1.2s infinite;
-    text-shadow:0 0 10px currentColor, 0 0 20px currentColor;
+    text-shadow:0 0 12px rgba(0,0,0,0.6);
 }
 @keyframes colorBlink {
-    0%{color:#ff4757;}
-    25%{color:#ffd166;}
-    50%{color:#2ed573;}
-    75%{color:#1e90ff;}
-    100%{color:#ff6b81;}
+    0%{color:#36ff88;}
+    25%{color:#41e2ff;}
+    50%{color:#ffd166;}
+    75%{color:#ff6b81;}
+    100%{color:#36ff88;}
 }
 h1{
     font-size:34px;
     margin-bottom:30px;
     color:#ffffff;
-    text-shadow:0 0 8px rgba(255,255,255,0.6);
+    text-shadow:0 0 8px rgba(0,0,0,0.7);
 }
 p{
     font-size:18px;
     margin-bottom:22px;
     text-align:justify;
-    background:linear-gradient(90deg, #ffd166, #ff6b81, #2ed573, #1e90ff);
+    background:linear-gradient(90deg,#36ff88,#41e2ff,#ffd166,#ff6b81);
     background-size:300% 100%;
     -webkit-background-clip:text;
     background-clip:text;
@@ -157,7 +148,7 @@ class Particle{
     draw(){
         ctx.beginPath();
         ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-        ctx.fillStyle = 'rgba(255,255,255,0.45)';
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
         ctx.fill();
     }
 }
@@ -174,7 +165,7 @@ function drawLine(p1,p2){
         ctx.beginPath();
         ctx.moveTo(p1.x,p1.y);
         ctx.lineTo(p2.x,p2.y);
-        ctx.strokeStyle = `rgba(255,255,255,${0.25-dist/480})`;
+        ctx.strokeStyle = `rgba(255,255,255,${0.22-dist/550})`;
         ctx.lineWidth=0.4;
         ctx.stroke();
     }
